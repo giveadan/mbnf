@@ -4,7 +4,7 @@
       <div class="line" style="align-self:flex-end;" v-bind:class="{active: isActive}">
         <img class="fit" src="../assets/brad-dorris.png" />
       </div>
-      <div class="flex-auto" style="align-self:center;text-align:center;">
+      <div class="flex-auto flexible-align">
         <h1>Brad - you may be married,<br>but you will not be forgotten.</h1>
       </div>
     </div>
@@ -22,6 +22,11 @@
 }
 img {
   vertical-align: text-bottom;
+}
+
+.flexible-align {
+  align-self: center;
+  text-align: center;
 }
 
 h1 {
@@ -64,6 +69,17 @@ h1 {
   }
   to {
     transform: translateX(0px);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  .flexible-align {
+    position: absolute;
+    top:0;
+    padding:15px 10px;
   }
 }
 
