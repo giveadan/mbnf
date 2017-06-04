@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <hero></hero>
     <hello></hello>
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello'
+import Hero from './components/Hero'
 
 export default {
   name: 'app',
   components: {
+    Hero,
     Hello
   }
 }
@@ -18,11 +20,11 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  font-family: 'Helvetica', Helvetica, Arial, sans-serif;
   color: #2c3e50;
-  margin-top: 60px;
+}
+body {
+  margin:0;
+  position: relative;
 }
 </style>

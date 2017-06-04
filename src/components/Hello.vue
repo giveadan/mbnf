@@ -1,6 +1,7 @@
-<template>
+<!-- <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <br>
+    <h1>We'll never forget you, Brad</h1>
     <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -33,6 +34,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello {
+  background: dodgerblue;
+}
 h1, h2 {
   font-weight: normal;
 }
@@ -51,3 +55,4 @@ a {
   color: #42b983;
 }
 </style>
+ -->
