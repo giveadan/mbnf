@@ -1,23 +1,76 @@
 <template>
-  <div class="hero">
+  <div class="hero" id="test">
     <div class="flex" style="height:100%;">
-      <div class="line" style="align-self:flex-end;" v-bind:class="{active: isActive}">
-        <img class="fit" src="../assets/brad-dorris.png" />
-      </div>
-      <div class="flex-auto flexible-align">
-        <h1>Brad - you may be married,<br>but you will not be forgotten.</h1>
+      <transition name="fade">
+        <div class="img-container" v-if="show">
+          <img class="fit" src="../assets/brad-dorris.png" />
+        </div>
+      </transition>
+      <div class="words flex-auto flexible-align">
+        <h1>Brad - you were a great friend,<br>and I'll miss hanging out with you.</h1>
+        <p class="content" @click="show = !show">
+        </p>
       </div>
     </div>
   </div>
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+      show: true
+    }
+  }
+}
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="scss">
+
+.content:after {
+  content: 'Ask if he wants to go to Bed Bath & Beyond';
+  background: #3B669E;
+  color: white;
+  padding: 15px 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.img-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  & + .words > .content:after {
+    content: 'Try to get a beer with Brad'
+  }
+  &.fade-enter-active:after {
+    content: "Hell yeah! Let's Go!";
+    position: absolute;
+    top: 50%;
+    right: -120px;
+    width: auto;
+    display: block;
+    padding: 6px;
+    border: 1px solid black;
+    background: white;
+  }
+  &.fade-leave-active:after {
+    content: "Can't. Sorry.";
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    padding: 6px;
+    border: 1px solid black;
+    background: white;
+    display: inline-block;
+  }
+}
+
 .hero {
   position: relative;
   width: 100%;
-  background: #dbf5ff;
   height: 100vh;
 }
 img {
@@ -27,14 +80,6 @@ img {
 .flexible-align {
   align-self: center;
   text-align: center;
-}
-
-h1 {
-  animation: fadein 1s 2s forwards;
-  opacity:0;
-/*  -moz-animation: fadein 5s;
-  -webkit-animation: fadein 5s;
-  -o-animation: fadein 5s; */
 }
 
 .hero {
@@ -59,28 +104,57 @@ h1 {
     to { opacity: 1; }
 }
 
-.line {
-  animation: dash 3s ease-out forwards;
-}
 
 @keyframes dash {
   from {
-    transform: translateX(-200px);
+    transform: translateX(-320px);
   }
   to {
     transform: translateX(0px);
   }
 }
 
+.fade-leave-active, .fade-enter-active {
+  & + .words > .content {
+    visibility: hidden;
+  }
+}
+
+.fade-leave-active {
+  animation: dash 2s linear forwards;
+  animation-direction: reverse;
+}
+
+.fade-enter-active {
+  animation: dash 2s ease-out forwards;
+}
+
+
 @media screen and (max-width: 560px) {
   h1 {
-    font-size: 1.5em;
+    font-size: 1em;
   }
+
+  .content:after {
+    // content: 'Ask if he wants to go to Bed Bath & Beyond';
+    // background: #3B669E;
+    // color: white;
+    // padding: 15px 10px;
+    // border: 1px solid #ccc;
+    // border-radius: 10px;
+    // cursor: pointer;
+    // position: absolute;
+    // bottom: 0;
+    font-size: 12px;
+  }
+
   .flexible-align {
     position: absolute;
     top:0;
+    width: 100%;
     padding:15px 10px;
   }
 }
+
 
 </style>
