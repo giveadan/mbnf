@@ -8,8 +8,10 @@
       </transition>
       <div class="words flex-auto flexible-align">
         <h1>Brad - you were a great friend,<br>and I'll miss hanging out with you.</h1>
-        <p class="content" @click="show = !show">
-        </p>
+        <div class="content" @click="show = !show">
+          <p v-if="show">Try to get a beer with Brad</p>
+          <p v-else>Ask if he wants to go to Bed Bath & Beyond</p>
+        </div>
       </div>
     </div>
   </div>
@@ -19,7 +21,7 @@
 export default {
   data () {
     return {
-      show: true
+      show: true,
     }
   }
 }
@@ -28,11 +30,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 
-.content:after {
-  content: 'Ask if he wants to go to Bed Bath & Beyond';
+.content {
+  padding: 0 8px;
+  display:inline-block;
   background: #3B669E;
   color: white;
-  padding: 15px 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
   cursor: pointer;
@@ -42,9 +44,6 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
-  & + .words > .content:after {
-    content: 'Try to get a beer with Brad'
-  }
   &.fade-enter-active:after {
     content: "Hell yeah! Let's Go!";
     position: absolute;
@@ -135,16 +134,7 @@ img {
     font-size: 1em;
   }
 
-  .content:after {
-    // content: 'Ask if he wants to go to Bed Bath & Beyond';
-    // background: #3B669E;
-    // color: white;
-    // padding: 15px 10px;
-    // border: 1px solid #ccc;
-    // border-radius: 10px;
-    // cursor: pointer;
-    // position: absolute;
-    // bottom: 0;
+  .content {
     font-size: 12px;
   }
 
@@ -152,7 +142,6 @@ img {
     position: absolute;
     top:0;
     width: 100%;
-    padding:15px 10px;
   }
 }
 
